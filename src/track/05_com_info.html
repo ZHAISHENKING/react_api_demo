@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="container2"></div>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- production version -->
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+    <script type="text/babel">
+        /* 需求，人员信息，性别、年龄没有则给默认值男、18*/
+
+        // function Person (props) {
+        //     return (
+        //         <ul>
+        //             <li>{props.name}</li>
+        //             <li>{props.age}</li>
+        //             <li>{props.sex}</li>    
+        //         </ul>
+        //     )
+        // }
+
+        class Person extends React.Component {
+            render () {
+                return (
+                    <ul>
+                        <li>{this.props.name}</li>
+                        <li>{this.props.age}</li>
+                        <li>{this.props.sex}</li>    
+                    </ul>
+                
+                )
+            }
+        }
+
+        // 类型检查
+        Person.propTypes = {
+            name: PropTypes.string.isRequired,
+            age: PropTypes.number
+        }
+
+        // 指定属性默认值
+        Person.defaultProps = {
+            sex: "男",
+            age: 18
+        }
+
+        const p1 = {
+            name: "sss",
+            age: 18,
+            sex: "男"
+        }
+        const p2 = {
+            name: "hhh",
+        }
+        ReactDOM.render(<Person {...p1}/>, document.getElementById('container'))
+
+        ReactDOM.render(<Person name={p2.name}/>, document.getElementById('container2'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- production version -->
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+    <script type="text/babel">
+        /* 需求，点击按钮，提示第一个输入框中的值
+        2. 第二个输入框失去焦点，提示这个输入框的值
+        */
+
+        class Person extends React.Component {
+            constructor(props){
+                super(props)
+                this.showInput = this.showInput.bind(this)  
+                this.handleBlur = this.handleBlur.bind(this)
+            }
+            showInput () {
+                const input = this.refs.content
+                alert(this.input.value)
+            }
+            handleBlur (e) {
+                alert(e.target.value)
+            }
+
+            render () {
+                return (
+                    <div>
+                        <input type="text" ref={input => this.input = input}/>&nbsp;&nbsp;
+                        <button onClick={this.showInput}>提示输入</button>&nbsp;&nbsp;
+                        <input type="text" placeholder="失去焦点提示内容" onBlur={this.handleBlur}/>
+                    </div>
+                
+                )
+            }
+        }
+
+       
+        ReactDOM.render(<Person/>, document.getElementById('container'))
+    </script>
+</body>
+</html>

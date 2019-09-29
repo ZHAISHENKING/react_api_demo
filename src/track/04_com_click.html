@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">是是</div>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        /* 需求，点击div切换文本*/
+        class Like extends React.Component {
+            constructor (props){
+                super(props)
+                // 初始化状态
+                this.state = {
+                    isLike: false
+                }
+
+                // 将新增方法中的this强制绑定为组件对象
+                this.handleClick = this.handleClick.bind(this)
+            }
+            // 新添加方法： 内部this默认不是组件对象， 而是underfined
+            handleClick () {
+                // 得到状态并取反
+                const isLike = !this.state.isLike
+                // 更新状态
+                this.setState({isLike})
+            }
+
+            // 重写组件类方法
+            render () {
+                const {isLike} = this.state
+                return <h2 onClick={this.handleClick}>{isLike ? '我喜欢你': '我不喜欢你'}</h2>
+            }
+        } 
+        ReactDOM.render(<Like />, document.getElementById('container'))
+    </script>
+</body>
+</html>
