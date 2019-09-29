@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- production version -->
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+    <!-- axios -->
+    <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+    <script type="text/babel">
+        /* 需求，使用axios来调用
+        */
+
+        class Life extends React.Component{
+            state = {
+                repoName: "",
+                repoUrl: ""
+            }
+            componentDidMount() {
+                const url = 'https://api.github.com/search/repositories?q=re&sort=starts'
+                axios.get(url)
+                    .then(response => {
+                        const result = response.data
+                        const {name, html_url} = result.items[0]
+                        this.setState({repoName:name, repoUrl:html_url})
+                    })
+            }
+            
+            render () {
+                const {repoName, repoUrl} = this.state
+                if(!repoName) {
+                    return <h2>LOADING...</h2>
+                } else {
+                    return <h2>Most start repo is <a href={repoUrl}>{repoName}</a></h2>
+                }
+            }
+        }
+
+        
+        
+ 
+        ReactDOM.render(<Life msg="react太难了" />, document.getElementById('container'))
+    </script>
+</body>
+</html>
