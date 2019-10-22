@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<script type="text/babel">
+/*
+    组件从创建方式上分为函数组件和class组件
+    没有state的时候用函数组件写更快
+    react组件特性：
+    - 所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。
+
+    纯函数： 指的是 函数不会更改参数的值， 且多次调用同样的入参返回的值也相同
+*/
+
+function formatDate(date) {
+  return date.toLocaleDateString();
+}
+
+function Avatar(props){
+    return (
+        <div>
+            <img src={props.user.avatar} alt="" />
+        </div>
+    )
+}
+
+function UserInfo(props){
+    return (
+        <div>
+            <a>{props.user.name}</a>
+            <i>{props.user.email}</i>
+            <Avatar user={props.user}></Avatar>
+        </div>
+    )
+}
+
+function Comment(props){
+    return (
+        <div class="Comment">
+            <UserInfo user={props.author}></UserInfo>  
+            <div>{props.text}</div>
+            <div>{formatDate(props.date)}</div>
+        </div>
+    )
+}
+
+const comment = {
+  date: new Date(),
+  text: 'I hope you enjoy learning React!',
+  author: {
+    name: 'Hello Kitty',
+    avatar: 'https://placekitten.com/g/64/64',
+    email: '1111111@163.com'
+  },
+}
+
+ReactDOM.render(
+  <Comment
+    date={comment.date}
+    text={comment.text}
+    author={comment.author}
+  />,
+  document.getElementById('app')
+);
+</script>
