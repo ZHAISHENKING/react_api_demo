@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<script type="text/babel">
+/*
+    jsx： 你可以像定义变量一样定义一个html元素
+    元素是构成 React 应用的最小砖块
+    属性中 用‘’包裹常量， 用{}包裹变量， 二选一
+
+    下面示例展示了一个定时器
+    理论上每秒执行一次ReactDOM.render, 
+    实际上ReactDOM会通过diff算法比较出最小改变元素并进行更新
+    也就是不断变化的时间文本
+*/
+let protocl = "https://"
+let pathname = "baidu.com"
+const href = protocl + pathname
+function tick(){
+    const temp = (
+    <div>
+        <h1>现在时间是：{new Date().toLocaleTimeString()}</h1>
+        <a href={href}>点击进入百度</a>    
+    </div>
+    )
+    ReactDOM.render(temp,document.getElementById('app'))
+}
+
+setInterval(tick, 1000);
+</script>

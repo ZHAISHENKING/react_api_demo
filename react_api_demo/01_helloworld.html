@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+<script type="text/babel">
+/*
+    react最简单的一个例子，通过此示例可以看出
+    react项目最起码需要的一些库  react.js  react-dom.js  babel.js
+    babel用来让浏览器能识别jsx语法，起到翻译功能
+*/
+const temp = <p>hello,world!</p>
+ReactDOM.render(temp,document.getElementById('app'))
+</script>
