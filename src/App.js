@@ -10,7 +10,6 @@ import MyPage from "./pages/MyPage";
 function App(){
   return (
     <BrowserRouter>
-      <Switch>
         <Route path='/login' component={LoginPage} />
         <PrivateRoute path='/'>
           <ul>
@@ -26,7 +25,6 @@ function App(){
             <Route path='/my' component={MyPage}/>
           </Switch>
         </PrivateRoute>
-      </Switch>
     </BrowserRouter>
   )
 }
