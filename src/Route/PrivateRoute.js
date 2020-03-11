@@ -1,11 +1,9 @@
 import React from 'react';
 import {Redirect, Route} from 'react-router-dom';
-import {connect} from 'react-redux'
+import {connect} from 'dva'
 
 export default connect(
-  ({user}) => ({
-    isLogin: user.isLogin
-  })
+  ({user}) => ({isLogin: user.isLogin})
 )(
   function PrivateRoute({children, isLogin, ...rest}) {
     return (

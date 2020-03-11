@@ -1,12 +1,20 @@
 import React from 'react';
-import store from "./store";
-import ReactDom from 'react-dom';
 import App from './App';
-import {Provider} from "react-redux";
+import dva from 'dva'
 
+const app = dva();
 
-ReactDom.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>
-  , document.getElementById('root'))
+app.model({
+  namespace: 'user',
+  state: {
+    isLogin: false
+  },
+  reducers: {
+    success(){
+      return {isLogin: true}
+    },
+  }
+})
+
+app.router(() => (<App />))
+app.start('#root')
