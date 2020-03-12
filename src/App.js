@@ -7,24 +7,24 @@ import MessagePage from "./pages/MessagePage";
 import SearchPage from "./pages/SearchPage";
 import MyPage from "./pages/MyPage";
 
-function App(){
+function App() {
   return (
     <BrowserRouter>
-        <Route path='/login' component={LoginPage} />
-        <PrivateRoute path='/'>
-          <ul>
-            <li><Link to='/'>主页</Link></li>
-            <li><Link to='/message'>消息</Link></li>
-            <li><Link to='/search'>发现</Link></li>
-            <li><Link to='/my'>我的</Link></li>
-          </ul>
-          <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route path='/message' component={MessagePage}/>
-            <Route path='/search' component={SearchPage}/>
-            <Route path='/my' component={MyPage}/>
-          </Switch>
-        </PrivateRoute>
+      <Route path='/login' component={LoginPage}/>
+      <PrivateRoute path='/'>
+        <ul>
+          <li><Link to='/'>主页</Link></li>
+          <li><Link to='/message'>消息</Link></li>
+          <li><Link to='/search'>发现</Link></li>
+          <li><Link to='/my'>我的</Link></li>
+        </ul>
+        <Switch>
+          <Route exact path='/' component={HomePage}/>
+          <Route path='/message' component={MessagePage}/>
+          <Route path='/search' component={SearchPage}/>
+          <Route path='/my' component={MyPage}/>
+        </Switch>
+      </PrivateRoute>
     </BrowserRouter>
   )
 }

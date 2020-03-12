@@ -10,11 +10,11 @@ app.model({
     isLogin: false
   },
   reducers: {
-    success(){
+    success() {
       return {isLogin: true}
     },
   }
 })
 
-app.router(() => (<App />))
+app.router(() => (<App/>))
 app.start('#root')

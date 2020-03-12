@@ -25,9 +25,13 @@ class LoginPage extends Component {
         <h1>登录</h1>
         <form>
           账号
-          <input type="text" value={username} onChange={e => {this.setState({username: e.target.value})}}/>
+          <input type="text" value={username} onChange={e => {
+            this.setState({username: e.target.value})
+          }}/>
           密码
-          <input type="password" value={password} onChange={e => {this.setState({password: e.target.value})}}/>
+          <input type="password" value={password} onChange={e => {
+            this.setState({password: e.target.value})
+          }}/>
           <div onClick={this.submit}>提交</div>
         </form>
       </div>
